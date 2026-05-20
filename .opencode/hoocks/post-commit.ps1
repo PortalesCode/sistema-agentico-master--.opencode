@@ -31,8 +31,8 @@ try {
     exit 0
   }
 
-  $prompt = "Post-commit: delega en chronicle para procesar HEAD y actualizar .opencode/graph/GRAPH.json y .opencode/graph/GRAVITY_STATE.json. No tocar stack, intent ni idea graphs."
-  & opencode run $prompt *> $logPath
+  $prompt = "Procesa el último commit (HEAD) y actualiza .opencode/graph/GRAPH.json y .opencode/graph/GRAVITY_STATE.json. No tocar stack, intent ni idea graphs."
+  & opencode run --agent chronicle $prompt *> $logPath
   exit 0
 }
 catch {

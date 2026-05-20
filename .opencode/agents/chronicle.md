@@ -1,5 +1,5 @@
 ---
-mode: subagent
+mode: all
 description: Procesa el último commit y actualiza GRAPH + GRAVITY_STATE
 ---
 
@@ -19,8 +19,10 @@ Este agente se invoca desde un único entry point post-commit (hook/`opencode ru
 1. Leer último commit y archivos modificados.
 2. Clasificar tipo de cambio (`feat`, `fix`, `refactor`, `docs`, etc.).
 3. Leer `.opencode/graph/VISION.md` si existe.
-4. Actualizar `.opencode/graph/GRAPH.json` con hechos del commit.
-5. Actualizar `.opencode/graph/GRAVITY_STATE.json` con señal breve:
+4. Si `.opencode/graph/` no existe, crearlo.
+5. Si `GRAPH.json` no existe, crearlo con estructura base.
+6. Actualizar `.opencode/graph/GRAPH.json` con hechos del commit.
+7. Actualizar `.opencode/graph/GRAVITY_STATE.json` con señal breve:
    - alineado
    - parcialmente alineado
    - desviado

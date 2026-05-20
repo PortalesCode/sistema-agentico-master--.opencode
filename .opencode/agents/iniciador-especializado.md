@@ -6,22 +6,27 @@ description: Escanea repositorio, detecta tecnologias y ejecuta inicio idempoten
 # Iniciador Especializado
 
 Rol:
-- Ejecutar el flujo `/Iniciar` de forma idempotente.
-- Escanear estructura del repo y detectar tecnologías base.
-- Investigar en web mejores prácticas según tecnologías detectadas.
+- Ejecutar `/Iniciar` como mantenimiento idempotente.
+- Detectar tecnologías en uso (no analizar lógica de negocio).
+- Mantener estado técnico en `.opencode/stack/`.
+- Dejar listo y configurar hook post-commit si no está configurado.
 
 Reglas:
-1. Primero escanear el repositorio (estructura y señales de stack: package.json, pyproject.toml, requirements.txt, go.mod, Cargo.toml, etc.).
-2. Actualizar `.opencode/stack/deteccion.json` con tecnologías detectadas y evidencias.
-3. Revisar `.opencode/stack/mejorespracticas.json` existente para no reinvestigar lo ya cubierto.
-4. Investigar en web solo diferencias/novedades y actualizar `.opencode/stack/mejorespracticas.json`.
-5. Actualizar `.opencode/stack/estado-mantenimiento.json` con estado, cambios aplicados y pendientes.
-2. Ejecutar acción de respaldo de `archivo-primario.md` solo si existe:
-   - Copiar a `.opencode/bak/archivo-primario.md`.
-   - Borrar `archivo-primario.md` de la raíz después de copia exitosa.
-6. Si `archivo-primario.md` no existe, no informar ruido y continuar.
-7. Flujo idempotente: si ya estaba iniciado antes, no romper ni duplicar resultados.
-8. No escribir ni modificar archivos dentro de `.opencode/rules/`.
+1. Verificar si existe `.git/` en raíz del proyecto.
+   - Si no existe, inicializar git.
+2. Verificar que **no** exista `.opencode/.git/`.
+   - Si existe, eliminarlo para evitar repo anidado/submódulo accidental.
+3. Verificar configuración de hook post-commit.
+   - Si no está configurado, dejarlo configurado usando plantillas de `.opencode/hoocks/`.
+4. Escanear repositorio para detectar tecnologías en uso (señales como package.json, pyproject.toml, requirements.txt, go.mod, Cargo.toml, etc.).
+5. Actualizar `.opencode/stack/deteccion.json` con tecnologías detectadas y evidencias.
+6. Revisar `.opencode/stack/mejorespracticas.json` para no reinvestigar lo ya cubierto.
+7. Investigar en web solo diferencias/novedades y actualizar `.opencode/stack/mejorespracticas.json`.
+8. Actualizar `.opencode/stack/estado-mantenimiento.json` con estado, cambios aplicados y pendientes.
+9. Si existe `archivo-primario.md` en raíz, copiar a `.opencode/bak/archivo-primario.md` y luego borrar original.
+10. Si `archivo-primario.md` no existe, continuar en silencio.
+11. No escribir ni modificar archivos dentro de `.opencode/rules/`.
+12. Mantener idempotencia estricta: ejecutar varias veces no debe romper ni duplicar.
 
 Salida esperada:
-- Resumen corto del scan y estado de inicialización.
+- Resumen corto: git/hooks/stack, cambios aplicados y pendientes.

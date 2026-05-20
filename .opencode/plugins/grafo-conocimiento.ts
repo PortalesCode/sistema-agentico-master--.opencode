@@ -60,6 +60,8 @@ function menuParaAgente(indice: Indice, agente: string): string {
     "📚 Conocimiento disponible para tu agente:",
     ...lineas,
     "",
+    "Regla: en cada mensaje, evaluá si necesitás usar leer_grafo o navegar_grafo.",
+    "Si no es relevante para lo que te pide el usuario, seguí sin revisarlos.",
     'Usá skill("conocimiento") para instrucciones de navegación.',
     "────────────────────",
     ""

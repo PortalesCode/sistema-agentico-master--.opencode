@@ -1,6 +1,7 @@
 ---
 mode: primary
 description: Agente Núcleo mínimo del sistema
+color: "#8b5cf6"
 ---
 
 # Núcleo

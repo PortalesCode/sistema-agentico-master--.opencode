@@ -10,6 +10,6 @@ if "%REPO_ROOT%"=="" exit /b 0
 where pwsh >nul 2>nul
 if errorlevel 1 exit /b 0
 
-pwsh -NoProfile -ExecutionPolicy Bypass -File "%REPO_ROOT%\.opencode\hoocks\post-commit.ps1" -RepoRoot "%REPO_ROOT%"
+pwsh -NoProfile -ExecutionPolicy Bypass -File "%REPO_ROOT%\.opencode\hooks-git\post-commit.ps1" -RepoRoot "%REPO_ROOT%"
 
 exit /b 0

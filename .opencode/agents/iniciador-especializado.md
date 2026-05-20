@@ -26,10 +26,10 @@ Reglas:
    - Si existe, agregar `.opencode/` solo si aún no está presente.
    - No duplicar entradas.
 4. Verificar configuración de hook post-commit.
-   - Si no está configurado, dejarlo configurado usando plantillas de `.opencode/hoocks/`.
-   - En Windows, asegurar `core.hooksPath` apuntando a `.opencode/hoocks`.
-   - Verificar existencia de `post-commit.cmd` y wrapper `post-commit`.
-   - Verificación obligatoria final: `git config --get core.hooksPath` debe devolver exactamente `.opencode/hoocks`.
+    - Si no está configurado, dejarlo configurado usando plantillas de `.opencode/hooks-git/`.
+    - En Windows, asegurar `core.hooksPath` apuntando a `.opencode/hooks-git`.
+    - Verificar existencia de `post-commit.cmd` y wrapper `post-commit`.
+    - Verificación obligatoria final: `git config --get core.hooksPath` debe devolver exactamente `.opencode/hooks-git`.
    - Si no coincide, corregir configuración y volver a verificar hasta que coincida.
 5. Escanear repositorio para detectar tecnologías en uso (señales como package.json, pyproject.toml, requirements.txt, go.mod, Cargo.toml, etc.).
    - OBLIGATORIO: ignorar `.opencode/` para inferencia de stack de producto.

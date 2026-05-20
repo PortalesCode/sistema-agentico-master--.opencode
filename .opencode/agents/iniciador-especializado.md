@@ -21,20 +21,24 @@ Reglas:
    - Si no existe, inicializar git.
 2. Verificar que **no** exista `.opencode/.git/`.
    - Si existe, eliminarlo para evitar repo anidado/submódulo accidental.
-3. Verificar configuración de hook post-commit.
+3. Asegurar regla de ignore para `.opencode/` en la raíz del proyecto.
+   - Si no existe `.gitignore` en raíz, crearlo.
+   - Si existe, agregar `.opencode/` solo si aún no está presente.
+   - No duplicar entradas.
+4. Verificar configuración de hook post-commit.
    - Si no está configurado, dejarlo configurado usando plantillas de `.opencode/hoocks/`.
    - En Windows, asegurar `core.hooksPath` apuntando a `.opencode/hoocks`.
    - Verificar existencia de `post-commit.cmd` y wrapper `post-commit`.
-4. Escanear repositorio para detectar tecnologías en uso (señales como package.json, pyproject.toml, requirements.txt, go.mod, Cargo.toml, etc.).
+5. Escanear repositorio para detectar tecnologías en uso (señales como package.json, pyproject.toml, requirements.txt, go.mod, Cargo.toml, etc.).
    - OBLIGATORIO: ignorar `.opencode/` para inferencia de stack de producto.
-5. Actualizar `.opencode/stack/deteccion.json` con tecnologías detectadas y evidencias.
-6. Revisar `.opencode/stack/mejorespracticas.json` para no reinvestigar lo ya cubierto.
-7. Investigar en web solo diferencias/novedades y actualizar `.opencode/stack/mejorespracticas.json`.
-8. Actualizar `.opencode/stack/estado-mantenimiento.json` con estado, cambios aplicados y pendientes.
-9. Si existe `archivo-primario.md` en raíz, copiar a `.opencode/bak/archivo-primario.md` y luego borrar original.
-10. Si `archivo-primario.md` no existe, continuar en silencio.
-11. No escribir ni modificar archivos dentro de `.opencode/rules/`.
-12. Mantener idempotencia estricta: ejecutar varias veces no debe romper ni duplicar.
+6. Actualizar `.opencode/stack/deteccion.json` con tecnologías detectadas y evidencias.
+7. Revisar `.opencode/stack/mejorespracticas.json` para no reinvestigar lo ya cubierto.
+8. Investigar en web solo diferencias/novedades y actualizar `.opencode/stack/mejorespracticas.json`.
+9. Actualizar `.opencode/stack/estado-mantenimiento.json` con estado, cambios aplicados y pendientes.
+10. Si existe `archivo-primario.md` en raíz, copiar a `.opencode/bak/archivo-primario.md` y luego borrar original.
+11. Si `archivo-primario.md` no existe, continuar en silencio.
+12. No escribir ni modificar archivos dentro de `.opencode/rules/`.
+13. Mantener idempotencia estricta: ejecutar varias veces no debe romper ni duplicar.
 
 Salida esperada:
 - Resumen corto: git/hooks/stack, cambios aplicados y pendientes.

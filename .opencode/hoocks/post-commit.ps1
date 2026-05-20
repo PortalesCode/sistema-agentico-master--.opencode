@@ -43,7 +43,7 @@ try {
     }
 
     try {
-      & opencode run --agent chronicle --dir $RepoRoot --format json $prompt --print-logs --log-level DEBUG *>> $logPath
+      & opencode run --agent chronicle --dir $RepoRoot --format json $prompt *>> $logPath
     }
     finally {
       foreach ($k in $gitEnvBackup.Keys) {

@@ -32,7 +32,14 @@ try {
   }
 
   $prompt = "Procesa el último commit (HEAD) y actualiza .opencode/graph/GRAPH.json y .opencode/graph/GRAVITY_STATE.json. No tocar stack, intent ni idea graphs."
-  & opencode run --agent chronicle $prompt *> $logPath
+  "[$(Get-Date -Format o)] RepoRoot=$RepoRoot" | Out-File -FilePath $logPath -Append -Encoding utf8
+  Push-Location -LiteralPath $RepoRoot
+  try {
+    & opencode run --agent chronicle $prompt *> $logPath
+  }
+  finally {
+    Pop-Location
+  }
   exit 0
 }
 catch {

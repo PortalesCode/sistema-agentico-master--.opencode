@@ -29,6 +29,8 @@ Reglas:
    - Si no está configurado, dejarlo configurado usando plantillas de `.opencode/hoocks/`.
    - En Windows, asegurar `core.hooksPath` apuntando a `.opencode/hoocks`.
    - Verificar existencia de `post-commit.cmd` y wrapper `post-commit`.
+   - Verificación obligatoria final: `git config --get core.hooksPath` debe devolver exactamente `.opencode/hoocks`.
+   - Si no coincide, corregir configuración y volver a verificar hasta que coincida.
 5. Escanear repositorio para detectar tecnologías en uso (señales como package.json, pyproject.toml, requirements.txt, go.mod, Cargo.toml, etc.).
    - OBLIGATORIO: ignorar `.opencode/` para inferencia de stack de producto.
 6. Actualizar `.opencode/stack/deteccion.json` con tecnologías detectadas y evidencias.

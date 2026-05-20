@@ -4,16 +4,46 @@
     "actualizado": null,
     "fuente": "iniciador-especializado"
   },
+  "ciclo": {
+    "ejecucion_id": null,
+    "ultimo_paso": null,
+    "ultimo_resultado": "idle",
+    "ultima_accion": null,
+    "ultima_duracion_ms": null
+  },
   "estado": {
     "inicializado": false,
     "ultima_ejecucion": null,
-    "idempotencia_hash": null
+    "idempotencia_hash": null,
+    "firma_stack": null,
+    "firma_repo": null
+  },
+  "checkpoints": {
+    "git_raiz_ok": false,
+    "opencode_git_limpio": false,
+    "hook_post_commit_ok": false,
+    "scan_stack_ok": false,
+    "deteccion_actualizada_ok": false,
+    "mejores_practicas_actualizadas_ok": false,
+    "backup_archivo_primario_ok": null
+  },
+  "hashes": {
+    "entrada_actual": null,
+    "entrada_anterior": null,
+    "salida_actual": null
+  },
+  "comparacion": {
+    "hubo_cambios": false,
+    "tecnologias_nuevas": [],
+    "tecnologias_removidas": [],
+    "tecnologias_con_cambio": []
   },
   "hooks": {
     "configurados": false,
     "ultima_revision": null,
     "detalle": []
   },
+  "errores": [],
   "cambios_aplicados": [],
   "pendientes": []
 }

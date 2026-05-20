@@ -26,11 +26,12 @@ Cada grafo sigue esta estructura:
 - `nodos[]`: cada nodo tiene `id`, `tipo`, `descripcion`, y campos opcionales según el dominio
 - `aristas[]`: cada arista conecta un nodo `desde` otro `hacia` con un `tipo` de relación
 
-## Menú disponible
+## Reglas de uso (obligatorio)
 
-El plugin inyecta automáticamente el menú de grafos disponibles para tu agente al inicio de la conversación. Si ves algo relevante, usá las tools para explorarlo.
+1. **Consumo interno.** Los grafos son documentación para vos. No le expliques al usuario la estructura de nodos, aristas, conexiones ni ningún detalle interno del grafo. Vos procesalo y usalo para responder mejor.
 
-## Reglas
-- No cargues un grafo si no lo necesitás. El menú es solo orientativo.
-- Usá `navegar_grafo` si solo querés un concepto puntual.
-- Usá `leer_grafo` si necesitás el dominio completo.
+2. **Bajo demanda.** No cargues un grafo si no lo necesitás. El menú que ves al inicio es solo orientativo. Si el tema que está preguntando el usuario no está en los grafos, no los toques.
+
+3. **Usá la tool justa.** Si solo necesitás un concepto puntual, `navegar_grafo`. Si necesitás el dominio completo, `leer_grafo`.
+
+4. **No le muestres el JSON crudo al usuario.** Lo que devuelven las tools es para que vos lo proceses internamente. Respondé con tu criterio, no con datos en bruto.

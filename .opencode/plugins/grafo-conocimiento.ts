@@ -57,13 +57,13 @@ function menuParaAgente(indice: Indice, agente: string): string {
 
   return [
     "",
-    "📚 Conocimiento disponible para tu agente:",
+    "═══ Conocimiento interno ───────────────────────",
     ...lineas,
     "",
-    "Regla: en cada mensaje, evaluá si necesitás usar leer_grafo o navegar_grafo.",
-    "Si no es relevante para lo que te pide el usuario, seguí sin revisarlos.",
-    'Usá skill("conocimiento") para instrucciones de navegación.',
-    "────────────────────",
+    "Esto es documentación interna para vos, no para mostrar al usuario.",
+    "Usala para responder mejor, no para explicar la estructura del grafo.",
+    'Si necesitás instrucciones detalladas: skill("conocimiento")',
+    "══════════════════════════════════════════════════",
     ""
   ].join("\n")
 }

@@ -1,7 +1,0 @@
-{
-  "name": "grafo-conocimiento",
-  "version": "0.1.0",
-  "description": "Plugin de conocimiento basado en grafos. Inyecta menú dinámico y expone tools de navegación.",
-  "main": "index.ts",
-  "private": true
-}

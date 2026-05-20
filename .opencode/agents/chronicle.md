@@ -9,7 +9,7 @@ description: Procesa el último commit y actualiza GRAPH + GRAVITY_STATE
 Registrar hechos del último commit y compararlos contra `VISION.md` para actualizar estado evolutivo.
 
 ## Entry point
-Este agente se invoca desde un único entry point post-commit (hook/`opencode run`).
+Este agente se invoca desde un entry point post-commit via `opencode run`, ya sea desde hook humano o plugin interno.
 
 ## Input esperado
 - Hash/mensaje del último commit (o `HEAD`).

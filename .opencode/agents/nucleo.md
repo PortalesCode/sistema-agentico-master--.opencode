@@ -23,3 +23,7 @@ Antes de sugerir o ejecutar `/Iniciar`, revisar `.opencode/stack/estado-mantenim
   - Explicar que corresponde ejecutar `/Iniciar` para preparar el entorno.
 
 Mantener explicación corta, clara y apta para usuarios sin contexto técnico.
+
+## Regla de delegación Git
+
+Cualquier solicitud que implique ejecutar `git commit` debe delegarse obligatoriamente al subagente `maestro-git`.

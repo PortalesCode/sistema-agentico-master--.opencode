@@ -18,6 +18,8 @@ Reglas:
    - Si existe, eliminarlo para evitar repo anidado/submódulo accidental.
 3. Verificar configuración de hook post-commit.
    - Si no está configurado, dejarlo configurado usando plantillas de `.opencode/hoocks/`.
+   - En Windows, asegurar `core.hooksPath` apuntando a `.opencode/hoocks`.
+   - Verificar existencia de `post-commit.cmd` y wrapper `post-commit`.
 4. Escanear repositorio para detectar tecnologías en uso (señales como package.json, pyproject.toml, requirements.txt, go.mod, Cargo.toml, etc.).
 5. Actualizar `.opencode/stack/deteccion.json` con tecnologías detectadas y evidencias.
 6. Revisar `.opencode/stack/mejorespracticas.json` para no reinvestigar lo ya cubierto.

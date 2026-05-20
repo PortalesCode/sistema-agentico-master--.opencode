@@ -1,12 +1,46 @@
-# Hook post-commit base para mantenimiento del sistema agéntico.
-# Este template puede ser invocado por el iniciador-especializado al configurar hooks.
+# Hook post-commit robusto para Windows.
+# Entry point único para disparar Chronicle vía opencode run.
 
-param()
+param(
+  [Parameter(Mandatory = $true)]
+  [string]$RepoRoot
+)
+
+$ErrorActionPreference = "Stop"
+
+$stackDir = Join-Path $RepoRoot ".opencode\stack"
+$lockPath = Join-Path $stackDir ".postcommit.lock"
+$logPath = Join-Path $stackDir "postcommit.log"
 
 try {
-  # Punto de extensión futuro: ejecutar mantenimiento liviano post-commit.
+  if (-not (Test-Path -LiteralPath $stackDir)) {
+    New-Item -ItemType Directory -Path $stackDir -Force | Out-Null
+  }
+
+  # Anti-recursión simple
+  if (Test-Path -LiteralPath $lockPath) {
+    exit 0
+  }
+
+  New-Item -ItemType File -Path $lockPath -Force | Out-Null
+
+  # Verificar opencode disponible
+  $hasOpencode = Get-Command opencode -ErrorAction SilentlyContinue
+  if (-not $hasOpencode) {
+    "[$(Get-Date -Format o)] opencode no encontrado en PATH." | Out-File -FilePath $logPath -Append -Encoding utf8
+    exit 0
+  }
+
+  $prompt = "Post-commit: delega en chronicle para procesar HEAD y actualizar .opencode/graph/GRAPH.json y .opencode/graph/GRAVITY_STATE.json. No tocar stack, intent ni idea graphs."
+  & opencode run $prompt *> $logPath
   exit 0
 }
 catch {
+  "[$(Get-Date -Format o)] ERROR post-commit: $($_.Exception.Message)" | Out-File -FilePath $logPath -Append -Encoding utf8
   exit 0
+}
+finally {
+  if (Test-Path -LiteralPath $lockPath) {
+    Remove-Item -LiteralPath $lockPath -Force -ErrorAction SilentlyContinue
+  }
 }

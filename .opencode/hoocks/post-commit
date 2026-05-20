@@ -1,0 +1,3 @@
+#!/bin/sh
+# Wrapper compatible con Git hooks.
+"$(dirname "$0")/post-commit.cmd"

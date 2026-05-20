@@ -1,12 +1,9 @@
 ---
 description: Guarda archivo-primario.md en .opencode/bak
-agent: build
+agent: nucleo
 ---
-Ejecuta solo esta acción:
+Ejecuta este flujo:
 
-1. Buscar `archivo-primario.md` en la raíz del proyecto.
-2. Si existe, copiarlo a `.opencode/bak/archivo-primario.md`.
-3. Luego de copiar correctamente, borrar `archivo-primario.md` de la raíz.
-4. Si no existe, no informar nada y no hacer más cambios.
-
-No hagas ninguna otra tarea.
+1. Delegar la ejecución al subagente `iniciador-especializado`.
+2. El subagente debe escanear repo/tecnologías y aplicar inicio idempotente.
+3. Mantener salida breve y sin ruido innecesario.

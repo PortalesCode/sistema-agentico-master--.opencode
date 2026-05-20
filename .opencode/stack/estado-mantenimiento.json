@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "version": 1,
+    "actualizado": null,
+    "fuente": "iniciador-especializado"
+  },
+  "estado": {
+    "inicializado": false,
+    "ultima_ejecucion": null,
+    "idempotencia_hash": null
+  },
+  "hooks": {
+    "configurados": false,
+    "ultima_revision": null,
+    "detalle": []
+  },
+  "cambios_aplicados": [],
+  "pendientes": []
+}

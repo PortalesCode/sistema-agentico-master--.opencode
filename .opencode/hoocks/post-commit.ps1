@@ -35,7 +35,21 @@ try {
   "[$(Get-Date -Format o)] RepoRoot=$RepoRoot" | Out-File -FilePath $logPath -Append -Encoding utf8
   Push-Location -LiteralPath $RepoRoot
   try {
-    & opencode run --agent chronicle $prompt *> $logPath
+    # Limpiar variables GIT_* heredadas del hook para evitar contexto sucio
+    $gitEnvBackup = @{}
+    Get-ChildItem Env: | Where-Object { $_.Name -like 'GIT_*' } | ForEach-Object {
+      $gitEnvBackup[$_.Name] = $_.Value
+      Remove-Item -LiteralPath ("Env:" + $_.Name) -ErrorAction SilentlyContinue
+    }
+
+    try {
+      & opencode run --agent chronicle $prompt *>> $logPath
+    }
+    finally {
+      foreach ($k in $gitEnvBackup.Keys) {
+        Set-Item -LiteralPath ("Env:" + $k) -Value $gitEnvBackup[$k]
+      }
+    }
   }
   finally {
     Pop-Location

@@ -20,8 +20,13 @@ interface Indice {
 }
 
 // ─── Utilidades ─────────────────────────────────────────────
-function leerIndice(worktree: string): Indice | null {
-  const ruta = path.join(worktree, INDICE_FILE)
+function resolverRaiz(ctxOrWorktree: any): string {
+  if (typeof ctxOrWorktree === "string") return path.resolve(ctxOrWorktree)
+  return path.resolve(ctxOrWorktree.directory || ctxOrWorktree.worktree || process.cwd())
+}
+
+function leerIndice(raiz: string): Indice | null {
+  const ruta = path.resolve(raiz, INDICE_FILE)
   if (!fs.existsSync(ruta)) return null
   try {
     return JSON.parse(fs.readFileSync(ruta, "utf-8"))
@@ -30,8 +35,8 @@ function leerIndice(worktree: string): Indice | null {
   }
 }
 
-function leerGrafo(worktree: string, archivo: string): any | null {
-  const ruta = path.join(worktree, GRAFOS_DIR, archivo)
+function leerGrafo(raiz: string, archivo: string): any | null {
+  const ruta = path.resolve(raiz, GRAFOS_DIR, archivo)
   if (!fs.existsSync(ruta)) return null
   try {
     return JSON.parse(fs.readFileSync(ruta, "utf-8"))
@@ -83,7 +88,7 @@ const grafoConocimientoPlugin: Plugin = async ({ worktree }) => {
       const agente = agentBySession.get(input.sessionID)
       if (!agente) return
 
-      const indice = leerIndice(worktree)
+      const indice = leerIndice(resolverRaiz(worktree))
       if (!indice) return
 
       const menu = menuParaAgente(indice, agente)
@@ -107,7 +112,8 @@ const grafoConocimientoPlugin: Plugin = async ({ worktree }) => {
           archivo: tool.schema.string().describe("Nombre del archivo .json del grafo (ej: trading.json)")
         },
         async execute(args, ctx) {
-          const grafo = leerGrafo(ctx.worktree, args.archivo)
+          const raiz = resolverRaiz(ctx)
+          const grafo = leerGrafo(raiz, args.archivo)
           if (!grafo) return `Error: no se encontró el grafo "${args.archivo}" en ${GRAFOS_DIR}/`
           return JSON.stringify(grafo, null, 2)
         }
@@ -121,8 +127,9 @@ const grafoConocimientoPlugin: Plugin = async ({ worktree }) => {
           nodo_id: tool.schema.string().describe("ID del nodo desde el cual navegar")
         },
         async execute(args, ctx) {
-          const grafo = leerGrafo(ctx.worktree, args.archivo)
-          if (!grafo) return `Error: no se encontró el grafo "${args.archivo}"`
+          const raiz = resolverRaiz(ctx)
+          const grafo = leerGrafo(raiz, args.archivo)
+          if (!grafo) return `Error: no se encontró el grafo "${args.archivo}" en la ruta ${raiz}\\${GRAFOS_DIR}\\`
 
           const nodo = grafo.nodos?.find((n: any) => n.id === args.nodo_id)
           if (!nodo) return `Error: nodo "${args.nodo_id}" no encontrado en ${args.archivo}`

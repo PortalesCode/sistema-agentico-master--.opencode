@@ -13,12 +13,12 @@ Este skill explica cómo usar las tools del plugin `grafo-conocimiento` para acc
 ### `leer_grafo("archivo.json")`
 Carga un grafo completo y devuelve todos sus nodos y aristas.
 - Uso: cuando necesitás el conocimiento completo de un dominio
-- Ej: `leer_grafo("sistema-agentico.json")`
+- Ej: `leer_grafo("sistemas-cognitivos.json")`
 
 ### `navegar_grafo("archivo.json", "id-del-nodo")`
 Parte de un nodo específico y devuelve sus conexiones (entrantes y salientes).
 - Uso: cuando ya sabés qué concepto te interesa y querés ver sus relaciones
-- Ej: `navegar_grafo("sistema-agentico.json", "nucleo")`
+- Ej: `navegar_grafo("sistemas-cognitivos.json", "graphs")`
 
 ## Formato de los grafos
 

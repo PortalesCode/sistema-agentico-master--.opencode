@@ -60,9 +60,9 @@ function menuParaAgente(indice: Indice, agente: string): string {
     "═══ Conocimiento interno ───────────────────────",
     ...lineas,
     "",
-    "Esto es documentación interna para vos, no para mostrar al usuario.",
-    "Usala para responder mejor, no para explicar la estructura del grafo.",
-    'Si necesitás instrucciones detalladas: skill("conocimiento")',
+    "Asimilalo, no lo exhibas. Respondé como si el conocimiento fuera tuyo.",
+    "No menciones el grafo ni su estructura. El usuario solo ve el resultado.",
+    'Instrucciones detalladas: skill("conocimiento")',
     "══════════════════════════════════════════════════",
     ""
   ].join("\n")

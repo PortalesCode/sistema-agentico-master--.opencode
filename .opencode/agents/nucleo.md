@@ -23,7 +23,9 @@ Objetivo:
 - Las tools `leer_grafo` y `navegar_grafo` existen para que NO tengas que explorar archivos internos.
 - No uses `glob`, `grep` ni `read` sobre `.opencode/grafos/`, `.opencode/graph/` o cualquier subdirectorio de `.opencode/`.
 - El menú que ves al inicio ya te dice qué grafos existen. Usá las tools directamente.
-- Si necesitás instrucciones de navegación, cargá el skill con `skill("conocimiento")`.
+- **Regla crítica:** si el menú lista un grafo que cubre el tema que te preguntan, cargalo con `leer_grafo`. No respondas solo con tu conocimiento general. Procesalo internamente y usa eso para responder mejor.
+- Si solo necesitás revisar un concepto puntual de un grafo, usá `navegar_grafo` en vez de cargar todo.
+- Si necesitás instrucciones de navegación detalladas, cargá el skill con `skill("conocimiento")`.
 
 ## Regla de orientación para `/Iniciar`
 

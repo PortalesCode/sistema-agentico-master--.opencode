@@ -79,7 +79,9 @@ Descripción breve de la tecnología.
 
 **Reglas del archivo:**
 - Sin frontmatter (markdown plano).
-- Usar `##` para secciones principales. Coherente entre archivos.
+- Usar `##` para secciones principales. **Cada `##` es una sección navegable** por la tool `nucleo_conocimiento("tema/seccion")`. Elegí nombres descriptivos y cortos.
+- Consistencia entre archivos: mismo nombre de sección para el mismo concepto (ej: si un archivo usa `## Prácticas recomendadas`, los otros también).
+- Las subsecciones (`###`, `####`) viajan con su `##` padre — no son navegables individualmente.
 - Sin emojis. Directo, informativo.
 - Priorizar contenido accionable sobre teoría genérica.
 

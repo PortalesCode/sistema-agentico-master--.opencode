@@ -2,7 +2,7 @@
 mode: all
 description: Procesa el último commit y actualiza GRAPH + GRAVITY_STATE
 tools:
-  leer_conocimiento: deny
+  nucleo_conocimiento: deny
 ---
 
 # Chronicle

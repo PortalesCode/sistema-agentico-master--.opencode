@@ -7,37 +7,42 @@ import * as fs from "fs"
 const CONOCIMIENTO_DIR = ".opencode/conocimiento"
 
 // ─── Utilidades ─────────────────────────────────────────────
-function resolverRaiz(ctxOrWorktree: any): string {
-  if (typeof ctxOrWorktree === "string") return path.resolve(ctxOrWorktree)
-  return path.resolve(ctxOrWorktree.directory || ctxOrWorktree.worktree || process.cwd())
+function resolverRaiz(ctx: any): string {
+  return path.resolve(ctx.directory || ctx.worktree || process.cwd())
 }
 
-// ─── Plugin (solo tools, sin hooks) ─────────────────────────
+function leerArchivo(raiz: string, subcarpeta: string, nombre: string): string {
+  // El agente pasa el nombre sin extensión, la tool agrega .md
+  const archivo = nombre.endsWith(".md") ? nombre : `${nombre}.md`
+  const ruta = path.resolve(raiz, CONOCIMIENTO_DIR, subcarpeta, archivo)
+
+  // Seguridad: evitar path traversal fuera de la subcarpeta
+  const resolvedo = path.resolve(ruta)
+  const base = path.resolve(raiz, CONOCIMIENTO_DIR, subcarpeta)
+  if (!resolvedo.startsWith(base)) {
+    return `Error: acceso denegado.`
+  }
+
+  if (!fs.existsSync(resolvedo)) {
+    return `Error: no se encontró "${nombre}" en conocimientos.`
+  }
+
+  return fs.readFileSync(resolvedo, "utf-8")
+}
+
+// ─── Plugin ─────────────────────────────────────────────────
 const conocimientoPlugin: Plugin = async () => {
 
   return {
     tool: {
 
-      leer_conocimiento: tool({
-        description: "Lee un archivo de conocimiento de .opencode/conocimiento/ y devuelve su contenido.",
+      nucleo_conocimiento: tool({
+        description: "Lee un conocimiento de la biblioteca de Núcleo.",
         args: {
-          archivo: tool.schema.string().describe("Nombre del archivo .md (ej: trading.md)")
+          nombre: tool.schema.string().describe("Nombre del conocimiento (ej: agentes-efectivos)")
         },
         async execute(args, ctx) {
-          const raiz = resolverRaiz(ctx)
-          const ruta = path.resolve(raiz, CONOCIMIENTO_DIR, args.archivo)
-
-          // Seguridad: evitar path traversal fuera de conocimiento/
-          const resolvedo = path.resolve(ruta)
-          if (!resolvedo.startsWith(path.resolve(raiz, CONOCIMIENTO_DIR))) {
-            return `Error: acceso denegado. Solo se puede leer archivos dentro de ${CONOCIMIENTO_DIR}/`
-          }
-
-          if (!fs.existsSync(resolvedo)) {
-            return `Error: no se encontró "${args.archivo}" en ${CONOCIMIENTO_DIR}/`
-          }
-
-          return fs.readFileSync(resolvedo, "utf-8")
+          return leerArchivo(resolverRaiz(ctx), "nucleo", args.nombre)
         }
       })
 

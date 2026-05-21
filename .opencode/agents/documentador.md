@@ -2,7 +2,7 @@
 mode: subagent
 description: Documenta cambios de proyecto en README y comentarios de código
 tools:
-  leer_conocimiento: deny
+  nucleo_conocimiento: deny
 ---
 
 # Documentador

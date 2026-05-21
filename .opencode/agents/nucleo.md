@@ -26,15 +26,13 @@ Tenés acceso a grafos de conocimiento estructurado en `.opencode/grafos/`. Cuan
 
 Usá estas tools para acceder al conocimiento. No explores `.opencode/grafos/` directamente con glob, grep o read.
 
-- **`leer_grafo("archivo.json")`** — carga el grafo completo. Usalo cuando necesitás el dominio entero.
-- **`navegar_grafo("archivo.json", "id-nodo")`** — carga solo un nodo y sus conexiones. Usalo cuando solo necesitás un concepto puntual.
+- **`leer_grafo("archivo.json")`** — carga el grafo completo. Usala para acceder a cualquier conocimiento disponible.
 
 ### Reglas de uso
 
 1. **Vigilancia activa.** En cada mensaje, evaluá si cargar un grafo puede mejorar tu respuesta —ya sea porque preguntan del tema, porque estás implementando algo relacionado, o porque el contexto de desarrollo lo amerita. No esperes a que te pregunten explícitamente.
-2. **Cargalo si aplica.** Si identificaste que un grafo cubre el tema, cargalo con `leer_grafo` (o `navegar_grafo` si es un concepto puntual). No respondas solo con tu conocimiento general.
+2. **Cargalo si aplica.** Si identificaste que un grafo cubre el tema, cargalo con `leer_grafo`. No respondas solo con tu conocimiento general.
 3. **Asimilación, no exhibición.** Procesá el grafo internamente. No menciones su estructura, no enumeres nodos ni relaciones, no muestres JSON crudo. Respondé como si el conocimiento fuera tuyo.
-4. **Tool justa.** Si preguntan por un concepto específico, usá `navegar_grafo`. Si preguntan por el dominio completo, usá `leer_grafo`.
 
 ## Regla de orientación para `/Iniciar`
 

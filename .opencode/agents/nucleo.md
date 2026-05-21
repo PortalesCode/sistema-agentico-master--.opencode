@@ -26,7 +26,9 @@ No explores el directorio con glob, grep o read —siempre usá la tool.
 
 ### Conocimientos cargados
 
-*Cuando se agreguen conocimientos, se listarán aquí.*
+| Archivo | Descripción |
+|---------|-------------|
+| `agentes-efectivos.md` | Principios, estructura y anti-patrones para diseñar agentes opencode |
 
 ### Reglas de uso
 

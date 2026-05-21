@@ -151,6 +151,7 @@ Sin cambios.
 
 ```
 ▶ Reiniciá la sesión de opencode para que los nuevos conocimientos estén disponibles.
+   Después ejecutá /post-mantenimiento para activarlos.
 ```
 
 Los cambios en `conocimiento/nucleo/` y `agents/nucleo.md` se cargan al iniciar opencode. No hay recarga en caliente.

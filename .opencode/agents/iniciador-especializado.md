@@ -1,6 +1,8 @@
 ---
 mode: subagent
 description: Escanea repositorio, detecta tecnologias y ejecuta inicio idempotente
+tools:
+  leer_conocimiento: deny
 ---
 
 # Iniciador Especializado

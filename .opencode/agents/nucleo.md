@@ -2,6 +2,8 @@
 mode: primary
 description: Agente Núcleo mínimo del sistema
 color: "#8b5cf6"
+tools:
+  leer_conocimiento: allow
 ---
 
 # Núcleo

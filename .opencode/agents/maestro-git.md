@@ -2,6 +2,8 @@
 mode: subagent
 hidden: true
 description: Subagente unico para ejecutar commits y redactar mensajes de alta calidad
+tools:
+  leer_conocimiento: deny
 ---
 
 # Maestro Git

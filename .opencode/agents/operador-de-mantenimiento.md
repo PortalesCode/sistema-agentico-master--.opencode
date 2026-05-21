@@ -148,28 +148,72 @@ Links a:
 
 ---
 
-## Fase 5: Registrar en nucleo.md (solo si se creó algo)
+## Fase 5: Conocimiento unificado del stack
 
-Si se crearon conocimientos nuevos, registrar en `agents/nucleo.md`:
+Si el stack detectado tiene **2 o más tecnologías** que interactúan entre sí:
 
-1. Leer el archivo actual.
-2. Agregar fila en la tabla "Conocimientos cargados":
-   `| \`<tecnologia>\` | Prácticas y recomendaciones para <Tecnologia> |`
-3. Si ya existe la fila, no duplicar.
+1. Identificar patrones, prácticas y configuraciones que surgen **de la combinación**, no de cada tecnología por separado.
+2. Crear `conocimiento/nucleo/stack-principal.md` con esta estructura:
+
+```markdown
+# Stack: [Tecnología A] + [Tecnología B]
+
+Descripción breve del stack combinado.
+
+## Integración
+
+Cómo se conectan las tecnologías entre sí. APIs, imports, protocolos, dependencias.
+
+## Prácticas recomendadas del stack
+
+Prácticas que solo aplican cuando estas tecnologías conviven.
+Ej: "En Python + tkinter, usar clase para encapsular la ventana y sus callbacks."
+
+## Patrones comunes del stack
+
+Patrones de diseño o arquitectura típicos de esta combinación.
+
+## Problemas conocidos del stack
+
+Conflictos de versiones, incompatibilidades, edge cases de la integración.
+
+## Configuración del stack
+
+Archivos de configuración, variables de entorno o settings que afectan al conjunto.
+```
+
+3. Registrar en la tabla de `nucleo.md` como:
+   `| \`stack-principal\` | Prácticas y patrones del stack [A] + [B] |`
+4. Si `stack-principal.md` ya existe y el stack no cambió, no regenerar.
+
+Si el stack tiene una sola tecnología o las tecnologías no interactúan, saltar esta fase.
 
 ---
 
-## Fase 6: Actualizar stack
+## Fase 6: Registrar en nucleo.md (solo si se creó algo)
+
+Si se crearon conocimientos nuevos (individuales o de stack), registrar en `agents/nucleo.md`:
+
+1. Leer el archivo actual.
+2. Agregar filas en la tabla "Conocimientos cargados":
+   - Por cada tecnología: `| \`<tech>\` | Prácticas y recomendaciones para <Tech> |`
+   - Por el stack: `| \`stack-principal\` | Prácticas del stack [A] + [B] |`
+3. Si ya existe la fila, no duplicar.
+4. No reordenar ni modificar filas existentes.
+
+---
+
+## Fase 7: Actualizar stack
 
 1. Actualizar `stack/mejorespracticas.json` con la investigación de las tecnologías nuevas.
 2. Actualizar `stack/estado-mantenimiento.json`:
    - Marcar `checkpoints` correspondientes.
-   - Agregar cambios aplicados (qué conocimientos se crearon).
+   - Agregar cambios aplicados (qué conocimientos individuales y de stack se crearon).
    - Agregar pendientes si los hay.
 
 ---
 
-## Fase 7: Reporte
+## Fase 8: Reporte
 
 Devolver a Núcleo resumen de no más de 8 líneas:
 

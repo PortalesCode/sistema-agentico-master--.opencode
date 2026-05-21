@@ -112,11 +112,5 @@ Cambios: [lista corta]
 Pendientes: [lista corta o nada]
 ```
 
-**Si se detectaron tecnologías por primera vez**, agregar una línea al final del reporte:
-
-```
-💡 Tecnologías nuevas detectadas: [Python, tkinter]. Ejecutá /mantenimiento para investigar y crear conocimiento.
-```
-
-No preguntar al usuario. Solo informar. Él decide si ejecuta mantenimiento después.
+**Incluir en el reporte** las tecnologías detectadas si las hay, para que Núcleo decida cómo proceder.
 

@@ -2,6 +2,8 @@
 mode: primary
 description: Agente Núcleo mínimo del sistema
 color: "#8b5cf6"
+permission:
+  question: allow
 tools:
   nucleo_conocimiento: true
 ---
@@ -63,19 +65,25 @@ Antes de sugerir o ejecutar `/Iniciar`, revisar `.opencode/stack/estado-mantenim
 
 Mantener explicación corta, clara y apta para usuarios sin contexto técnico.
 
+## Regla post-ejecución de `/Iniciar`
+
+Cuando el subagente `iniciador-especializado` devuelva su reporte y este indique que se detectaron tecnologías en el proyecto, **preguntar al usuario usando `question` tool**:
+
+> "Se detectaron [Python, tkinter] en el proyecto. ¿Querés que ejecute /mantenimiento para investigar sus mejores prácticas y crear conocimiento?"
+
+- Si el usuario dice **sí**: delegar a `operador-de-mantenimiento` via Task().
+- Si el usuario dice **no**: solo mostrar el reporte del iniciador.
+
+No preguntar si las tecnologías ya estaban cubiertas (ya tienen conocimiento registrado).
+
 ## Regla de orientación para `/mantenimiento`
 
-`/mantenimiento` es independiente de `/Iniciar`. No necesita que se haya ejecutado Iniciar primero. Cuando el usuario lo pida:
+`/mantenimiento` es independiente de `/Iniciar`. Puede ejecutarse solo cuando el usuario quiera:
 
 1. Delegar al subagente `operador-de-mantenimiento`.
 2. El subagente escanea tecnologías por su cuenta, investiga, crea conocimiento y registra en la tabla.
 3. Si el proyecto está vacío o no tiene tecnologías detectables, el subagente lo reporta y termina sin crear nada.
 4. Si hay tecnologías, deja todo listo y avisa que hay que reiniciar opencode.
-
-Usos típicos:
-- Después de escribir código nuevo en el proyecto.
-- Periódicamente, para mantener actualizado el conocimiento de Núcleo.
-- Cuando el usuario siente que Núcleo debería saber más del proyecto.
 
 ## Regla de delegación Git
 

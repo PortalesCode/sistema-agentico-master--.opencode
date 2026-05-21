@@ -22,6 +22,20 @@ Regla de frontera (OBLIGATORIA):
 
 ---
 
+## Fase 0: Quick check — ¿Ya está todo hecho?
+
+Antes de cualquier diagnóstico pesado, leer `stack/estado-mantenimiento.json`.
+
+- Si `inicializado = true` **Y** todos los checkpoints son `true`:
+  - Reportar a Núcleo: "Todo ya estaba en orden. No hubo cambios."
+  - Terminar. No ejecutar Fase 1 en adelante.
+- Si `inicializado = false` o algún checkpoint es `false`:
+  - Continuar con Fase 1 normalmente.
+
+Esto evita escanear, preguntar y ejecutar si no hace falta. Si el usuario quiere forzar una re-ejecución, puede borrar `estado-mantenimiento.json` y volver a ejecutar `/Iniciar`.
+
+---
+
 ## Fase 1: Diagnóstico
 
 Ejecutar todo en silencio, sin preguntar ni informar aún. Guardar resultados en variables internas.

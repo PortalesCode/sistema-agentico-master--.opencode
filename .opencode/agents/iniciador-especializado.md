@@ -1,6 +1,8 @@
 ---
 mode: subagent
 description: Diagnostica el entorno, consulta decisiones faltantes y ejecuta inicio idempotente
+permission:
+  question: allow
 tools:
   nucleo_conocimiento: false
 ---

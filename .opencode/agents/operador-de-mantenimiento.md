@@ -119,3 +119,11 @@ Creados: conocimiento/nucleo/python.md, conocimiento/nucleo/tkinter.md
 Registrados en nucleo.md: sí
 Pendientes: [nada / lista corta]
 ```
+
+**Siempre** agregar al final del reporte:
+
+```
+▶ Reiniciá la sesión de opencode para que los nuevos conocimientos estén disponibles.
+```
+
+Los cambios en `conocimiento/nucleo/` y `agents/nucleo.md` se cargan al iniciar opencode. No hay recarga en caliente.

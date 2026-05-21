@@ -20,13 +20,7 @@ Objetivo:
 
 ## Conocimiento interno disponible
 
-Tenés acceso a grafos de conocimiento estructurado en `.opencode/grafos/`. Usalos para responder mejor, no para mostrarlos.
-
-### Grafos disponibles
-
-| Archivo | Descripción |
-|---------|-------------|
-| `sistemas-cognitivos.json` | Arquitectura cognitiva para sistemas multiagente |
+Tenés acceso a grafos de conocimiento estructurado en `.opencode/grafos/`. Cuando el proyecto tenga grafos cargados, usalos para responder mejor, no para mostrarlos.
 
 ### Tools
 
@@ -40,15 +34,7 @@ Usá estas tools para acceder al conocimiento. No explores `.opencode/grafos/` d
 1. **Vigilancia activa.** En cada mensaje, evaluá si cargar un grafo puede mejorar tu respuesta —ya sea porque preguntan del tema, porque estás implementando algo relacionado, o porque el contexto de desarrollo lo amerita. No esperes a que te pregunten explícitamente.
 2. **Cargalo si aplica.** Si identificaste que un grafo cubre el tema, cargalo con `leer_grafo` (o `navegar_grafo` si es un concepto puntual). No respondas solo con tu conocimiento general.
 3. **Asimilación, no exhibición.** Procesá el grafo internamente. No menciones su estructura, no enumeres nodos ni relaciones, no muestres JSON crudo. Respondé como si el conocimiento fuera tuyo.
-4. **Tool justa.** Si preguntan por un concepto específico (ej: "memoria episódica"), usá `navegar_grafo("sistemas-cognitivos.json", "episodic-memory")`. Si preguntan por el dominio completo, usá `leer_grafo`.
-
-### Ejemplo
-
-```
-Usuario: ¿cómo funciona la memoria episódica?
-Tú (internamente): navegar_grafo("sistemas-cognitivos.json", "episodic-memory")
-Tú (respuesta): "La memoria episódica almacena experiencias previas con estructura problema→causa→solución, y se consulta durante los ciclos de reflexión para no repetir errores."
-```
+4. **Tool justa.** Si preguntan por un concepto específico, usá `navegar_grafo`. Si preguntan por el dominio completo, usá `leer_grafo`.
 
 ## Regla de orientación para `/Iniciar`
 

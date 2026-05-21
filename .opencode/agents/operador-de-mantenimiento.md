@@ -228,17 +228,23 @@ Si `licencias.md` ya existe y las tecnologías no cambiaron, no regenerar. Si ha
 
 ---
 
-## Fase 6: Registrar en nucleo.md (solo si se creó algo)
+## Fase 6: Registrar en agents/nucleo.md (solo si se creó algo)
 
-Si se crearon conocimientos nuevos (individuales, stack o licencias), registrar en `agents/nucleo.md`:
+⚠️ **CRÍTICO: NO crear archivo nuevo.** Nunca crees `.opencode/nucleo.md` ni ningún otro archivo.
+Siempre editar el archivo existente `agents/nucleo.md`. Si no existe, reportar error y detener.
 
-1. Leer el archivo actual.
-2. Agregar filas en la tabla "Conocimientos cargados":
-   - Por cada tecnología: `| \`<tech>\` | Prácticas y recomendaciones para <Tech> |`
+Si se crearon conocimientos nuevos (individuales, stack o licencias), registrarlos en la tabla "Conocimientos cargados" de `agents/nucleo.md`:
+
+1. **Leer `agents/nucleo.md`** (no otro archivo).
+2. **OBLIGATORIO: la tabla tiene exactamente 2 columnas:** `Conocimiento | Descripción`. No hay ni se agrega columna Ruta, Path ni ninguna otra. Si ves una tercera columna en tu lectura, no la copies ni la reproduzcas.
+   - **Motivo:** Núcleo accede a los conocimientos mediante la tool `nucleo_conocimiento("nombre")`, no por rutas de archivo. El valor de la columna `Conocimiento` (ej: `lenguaje-python`) es lo que Núcleo pasa como argumento a la tool. La tool resuelve la ruta y agrega la extensión `.md` automáticamente. Poner la ruta o extensión en la tabla no solo es redundante, sino que contradice el diseño del sistema.
+3. **El nombre en la tabla va SIN extensión `.md`.** La tool la agrega sola. Ejemplo correcto: `lenguaje-python` (no `lenguaje-python.md`).
+4. **Agregar filas** respetando el formato de 2 columnas:
+   - Por cada tecnología: `| \`<tech>\` | Prácticas y recomendaciones para <Tech> |` (ej: `| \`lenguaje-python\` | Prácticas y recomendaciones para Python |`)
    - Por el stack: `| \`stack-principal\` | Prácticas del stack [A] + [B] |`
    - Por licencias: `| \`licencias\` | Licencias y restricciones del stack |`
-3. Si ya existe la fila, no duplicar.
-4. No reordenar ni modificar filas existentes.
+4. Si ya existe la fila, no duplicar.
+5. No reordenar ni modificar filas existentes.
 
 ---
 

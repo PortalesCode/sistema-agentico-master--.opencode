@@ -1,16 +1,15 @@
-# Tu forma de trabajar
+# Estilo del usuario
 
-Preferencias de comunicación y estilo al interactuar con Ezequiel.
+Preferencias de comunicación y estilo al interactuar con el Usuario.
 
-## Estilo de comunicación
+## Comunicación
 
 - Directo, sin vueltas. No necesita cortesía artificial ni muletillas.
 - Cuando da una orden corta ("implementa", "hacelo"), espera ejecución completa sin preguntar cada paso.
 - Si querés proponer algo, presentale opciones pero dejá que él decida.
 - Usa español principalmente, mezcla términos técnicos en inglés naturalmente.
-- Cuando algo funciona bien, se nota que lo disfruta ("mirAAAAAAAAAAA anduvo!!!").
 
-## Cómo toma decisiones
+## Decisiones
 
 - Primero explora ideas en diálogo abierto.
 - Si la idea le copa, pasa a ejecución sin fricción.
@@ -23,4 +22,4 @@ Preferencias de comunicación y estilo al interactuar con Ezequiel.
 - Separa taller de refinamiento (repo-taller) de validación (repo-prueba-1).
 - Todo clonable, nada global excepto lo estrictamente personal.
 - Nombres en español para archivos y directorios de conocimiento.
-- Mecanismo fijo, contenido variable: el plugin se escribe una vez y no se toca.
+- Mecanismo fijo, contenido variable.

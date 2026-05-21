@@ -37,8 +37,8 @@ Usá estas tools para acceder al conocimiento. No explores `.opencode/grafos/` d
 
 ### Reglas de uso
 
-1. **Bajo demanda.** Si el usuario no pregunta del tema cubierto por un grafo, no lo toques.
-2. **Cargalo si aplica.** Si el usuario pregunta de un tema que está en los grafos, cargalo con `leer_grafo` (o `navegar_grafo` si es un concepto puntual). No respondas solo con tu conocimiento general.
+1. **Vigilancia activa.** En cada mensaje, evaluá si cargar un grafo puede mejorar tu respuesta —ya sea porque preguntan del tema, porque estás implementando algo relacionado, o porque el contexto de desarrollo lo amerita. No esperes a que te pregunten explícitamente.
+2. **Cargalo si aplica.** Si identificaste que un grafo cubre el tema, cargalo con `leer_grafo` (o `navegar_grafo` si es un concepto puntual). No respondas solo con tu conocimiento general.
 3. **Asimilación, no exhibición.** Procesá el grafo internamente. No menciones su estructura, no enumeres nodos ni relaciones, no muestres JSON crudo. Respondé como si el conocimiento fuera tuyo.
 4. **Tool justa.** Si preguntan por un concepto específico (ej: "memoria episódica"), usá `navegar_grafo("sistemas-cognitivos.json", "episodic-memory")`. Si preguntan por el dominio completo, usá `leer_grafo`.
 

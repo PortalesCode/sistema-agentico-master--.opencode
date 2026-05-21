@@ -70,37 +70,81 @@ Para cada tecnología nueva (las que están en la brecha):
 
 ## Fase 4: Crear conocimiento (solo la brecha)
 
-Para cada tecnología nueva de la brecha, crear `conocimiento/nucleo/<tecnologia>.md` con esta estructura:
+Para cada tecnología nueva de la brecha, crear `conocimiento/nucleo/<tecnologia>.md` con la siguiente estructura. **Todas las secciones son obligatorias** — si alguna no aplica, explicar por qué en lugar de omitirla.
 
 ```markdown
 # <Tecnología>
 
-Descripción breve de la tecnología.
+Descripción general: qué es, para qué sirve, versión relevante detectada en el proyecto.
 
 ## Prácticas recomendadas
 
-- Lista de prácticas con nivel de prioridad (alta/media/baja).
+Lista numerada de prácticas. Cada una con:
+- Prioridad: alta / media / baja.
+- Contexto breve: cuándo aplica y por qué.
+- Ejemplo concreto si aplica.
 
-## Anti-patrones
+Priorizar prácticas accionables (se pueden implementar ahora) sobre teoría genérica.
 
-- Qué evitar y por qué.
+## Anti-patrones y seguridad
+
+Errores comunes, malas prácticas, vulnerabilidades típicas.
+Cada entrada debe explicar:
+- Qué no hacer.
+- Por qué es problemático.
+- Cómo hacerlo bien en su lugar.
 
 ## Testing
 
-- Frameworks, herramientas, mejores prácticas de testing.
+Frameworks, herramientas y enfoques de testing para esta tecnología.
+Incluir:
+- Framework recomendado con ejemplo breve.
+- Qué priorizar (unit, integration, e2e).
+- Cómo estructurar los tests.
+- Herramientas complementarias (cobertura, mocking, etc.).
+
+## Configuración y entorno
+
+Qué archivos de configuración se esperan, variables de entorno comunes, dependencias típicas.
+Incluir ejemplos concretos del proyecto si aplican.
+
+## Estructura de proyecto
+
+Layout recomendado de directorios y archivos para esta tecnología.
+Incluir convenciones de naming y organización.
+
+## Herramientas del ecosistema
+
+CLIs, linters, formatters, build tools, depuradores y otras herramientas relevantes.
+Para cada una: qué hace, cuándo usarla, comando de instalación breve.
+
+## Comandos rápidos
+
+Lista de comandos frecuentes (instalar, correr, testear, build, deploy).
+Formato: descripción → comando.
+
+## Integraciones
+
+Cómo se integra esta tecnología con otras del stack detectado.
+Ej: "Python con tkinter: se integra vía import tkinter, no necesita configuración adicional."
 
 ## Recursos
 
-- Links a documentación, tutoriales, referencias.
+Links a:
+- Documentación oficial
+- Guías / tutoriales recomendados
+- Comunidades (foros, Discord, subreddits)
+- Repositorios de ejemplo / starters
 ```
 
 **Reglas del archivo:**
 - Sin frontmatter (markdown plano).
 - Usar `##` para secciones principales. **Cada `##` es una sección navegable** por la tool `nucleo_conocimiento("tema/seccion")`. Elegí nombres descriptivos y cortos.
-- Consistencia entre archivos: mismo nombre de sección para el mismo concepto (ej: si un archivo usa `## Prácticas recomendadas`, los otros también).
+- Consistencia entre archivos: mismo nombre de sección para el mismo concepto.
 - Las subsecciones (`###`, `####`) viajan con su `##` padre — no son navegables individualmente.
-- Sin emojis. Directo, informativo.
+- Sin emojis. Directo, informativo, técnico.
 - Priorizar contenido accionable sobre teoría genérica.
+- **Cada sección debe tener al menos 3-4 puntos concretos.** No dejar secciones vacías ni con un solo ítem.
 
 ---
 

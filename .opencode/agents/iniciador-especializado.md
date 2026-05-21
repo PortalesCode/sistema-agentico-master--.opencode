@@ -2,7 +2,7 @@
 mode: subagent
 description: Escanea repositorio, detecta tecnologias y ejecuta inicio idempotente
 tools:
-  nucleo_conocimiento: deny
+  nucleo_conocimiento: false
 ---
 
 # Iniciador Especializado
@@ -46,3 +46,4 @@ Reglas:
 
 Salida esperada:
 - Resumen corto: git/hooks/stack, cambios aplicados y pendientes.
+

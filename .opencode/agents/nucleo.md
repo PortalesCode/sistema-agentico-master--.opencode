@@ -3,7 +3,7 @@ mode: primary
 description: Agente Núcleo mínimo del sistema
 color: "#8b5cf6"
 tools:
-  nucleo_conocimiento: allow
+  nucleo_conocimiento: true
 ---
 
 # Núcleo
@@ -53,3 +53,4 @@ Mantener explicación corta, clara y apta para usuarios sin contexto técnico.
 ## Regla de delegación Git
 
 Cualquier solicitud que implique ejecutar `git commit` debe delegarse obligatoriamente al subagente `maestro-git`.
+

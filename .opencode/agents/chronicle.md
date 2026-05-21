@@ -2,7 +2,7 @@
 mode: all
 description: Procesa el último commit y actualiza GRAPH + GRAVITY_STATE
 tools:
-  nucleo_conocimiento: deny
+  nucleo_conocimiento: false
 ---
 
 # Chronicle
@@ -44,3 +44,4 @@ Este agente se invoca desde un único entry point post-commit (hook/`opencode ru
 - Si no existe `VISION.md`, marcar estado como `vision_missing`.
 - No tocar código de producto.
 - Mantener salida corta y orientada a estado post-commit.
+

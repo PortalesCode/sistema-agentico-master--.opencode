@@ -3,7 +3,7 @@ mode: subagent
 hidden: true
 description: Subagente unico para ejecutar commits y redactar mensajes de alta calidad
 tools:
-  nucleo_conocimiento: deny
+  nucleo_conocimiento: false
 ---
 
 # Maestro Git
@@ -39,3 +39,4 @@ Eres `maestro-git`, el subagente interno y oculto responsable exclusivo de opera
 
 ## Delegacion
 - Si otro agente o solicitud requiere `git commit`, debe delegarse a `maestro-git`.
+

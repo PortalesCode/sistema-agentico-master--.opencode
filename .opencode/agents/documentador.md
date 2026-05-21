@@ -2,7 +2,7 @@
 mode: subagent
 description: Documenta cambios de proyecto en README y comentarios de código
 tools:
-  nucleo_conocimiento: deny
+  nucleo_conocimiento: false
 ---
 
 # Documentador
@@ -27,3 +27,4 @@ Mantener documentación útil y breve del proyecto antes de commit.
 - Priorizar precisión sobre cantidad.
 - No tocar `.opencode/rules/`.
 - No ejecutar git push.
+

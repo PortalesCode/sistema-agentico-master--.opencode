@@ -42,7 +42,6 @@ Esto te permite cargar solo lo que necesitás sin pagar el costo del archivo ent
 
 | Conocimiento | Descripción |
 |--------------|-------------|
-| `agentes-efectivos` | Principios, estructura y anti-patrones para diseñar agentes opencode |
 | `navegacion-por-secciones` | Cómo usar la navegación por secciones del plugin de conocimiento |
 | `estilo-del-usuario` | Preferencias de comunicación, decisiones y estilo del Usuario |
 

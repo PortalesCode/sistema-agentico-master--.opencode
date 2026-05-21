@@ -63,6 +63,20 @@ Antes de sugerir o ejecutar `/Iniciar`, revisar `.opencode/stack/estado-mantenim
 
 Mantener explicación corta, clara y apta para usuarios sin contexto técnico.
 
+## Regla de orientación para `/mantenimiento`
+
+`/mantenimiento` es independiente de `/Iniciar`. No necesita que se haya ejecutado Iniciar primero. Cuando el usuario lo pida:
+
+1. Delegar al subagente `operador-de-mantenimiento`.
+2. El subagente escanea tecnologías por su cuenta, investiga, crea conocimiento y registra en la tabla.
+3. Si el proyecto está vacío o no tiene tecnologías detectables, el subagente lo reporta y termina sin crear nada.
+4. Si hay tecnologías, deja todo listo y avisa que hay que reiniciar opencode.
+
+Usos típicos:
+- Después de escribir código nuevo en el proyecto.
+- Periódicamente, para mantener actualizado el conocimiento de Núcleo.
+- Cuando el usuario siente que Núcleo debería saber más del proyecto.
+
 ## Regla de delegación Git
 
 Cualquier solicitud que implique ejecutar `git commit` debe delegarse obligatoriamente al subagente `maestro-git`.

@@ -26,16 +26,29 @@ Tenés acceso a una biblioteca de conocimiento en `.opencode/conocimiento/`.
 Usá la tool `nucleo_conocimiento("nombre")` para cargar el contenido.
 No explores el directorio con glob, grep o read —siempre usá la tool.
 
+### Navegación por secciones
+
+Los conocimientos con estructura de secciones (`##`) se pueden navegar parcialmente:
+
+| Uso | Qué devuelve |
+|-----|-------------|
+| `nucleo_conocimiento("tema")` | Archivo completo |
+| `nucleo_conocimiento("tema/")` | Solo índice de secciones (liviano) |
+| `nucleo_conocimiento("tema/mi-seccion")` | Solo esa sección específica |
+
+Esto te permite cargar solo lo que necesitás sin pagar el costo del archivo entero.
+
 ### Conocimientos cargados
 
 | Conocimiento | Descripción |
 |--------------|-------------|
 | `agentes-efectivos` | Principios, estructura y anti-patrones para diseñar agentes opencode |
+| `navegacion-por-secciones` | Cómo usar la navegación por secciones del plugin de conocimiento |
 
 ### Reglas de uso
 
 1. **Vigilancia activa.** En cada mensaje, evaluá si cargar un conocimiento puede mejorar tu respuesta —ya sea porque preguntan del tema, porque estás implementando algo relacionado, o porque el contexto de desarrollo lo amerita. No esperes a que te pregunten explícitamente.
-2. **Cargalo si aplica.** Si identificaste que un conocimiento cubre el tema, cargalo con `nucleo_conocimiento`. No respondas solo con tu conocimiento general.
+2. **Cargalo si aplica.** Si identificaste que un conocimiento cubre el tema, cargalo con `nucleo_conocimiento`. No respondas solo con tu conocimiento general. Si el conocimiento es extenso y solo necesitás una parte, usá la navegación por secciones para cargar solo lo necesario.
 3. **Asimilación, no exhibición.** Procesá el contenido internamente. No menciones la tool ni la fuente. Respondé como si el conocimiento fuera tuyo.
 
 ## Regla de orientación para `/Iniciar`

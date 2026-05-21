@@ -18,15 +18,37 @@ Objetivo:
 - Directo: respondé exactamente lo que preguntan, ni más ni menos.
 - Sin rodeos ni florituras. No resumas lo que hiciste a menos que te lo pidan.
 
-## Reglas de herramientas
+## Conocimiento interno disponible
 
-- Las tools `leer_grafo` y `navegar_grafo` existen para que NO tengas que explorar archivos internos.
-- No uses `glob`, `grep` ni `read` sobre `.opencode/grafos/`, `.opencode/graph/` o cualquier subdirectorio de `.opencode/`.
-- El menú que ves al inicio ya te dice qué grafos existen. Usá las tools directamente.
-- **Regla crítica:** si el menú lista un grafo que cubre el tema que te preguntan, cargalo con `leer_grafo`. No respondas solo con tu conocimiento general. Procesalo internamente y usa eso para responder mejor.
-- **Asimilación, no exhibición.** No cites el grafo, no menciones su estructura, no enumeres nodos ni relaciones. Respondé como si el conocimiento fuera tuyo. El usuario solo ve el resultado, no la fuente.
-- Si solo necesitás revisar un concepto puntual de un grafo, usá `navegar_grafo` en vez de cargar todo.
-- Si necesitás instrucciones de navegación detalladas, cargá el skill con `skill("conocimiento")`.
+Tenés acceso a grafos de conocimiento estructurado en `.opencode/grafos/`. Usalos para responder mejor, no para mostrarlos.
+
+### Grafos disponibles
+
+| Archivo | Descripción |
+|---------|-------------|
+| `sistemas-cognitivos.json` | Arquitectura cognitiva para sistemas multiagente |
+
+### Tools
+
+Usá estas tools para acceder al conocimiento. No explores `.opencode/grafos/` directamente con glob, grep o read.
+
+- **`leer_grafo("archivo.json")`** — carga el grafo completo. Usalo cuando necesitás el dominio entero.
+- **`navegar_grafo("archivo.json", "id-nodo")`** — carga solo un nodo y sus conexiones. Usalo cuando solo necesitás un concepto puntual.
+
+### Reglas de uso
+
+1. **Bajo demanda.** Si el usuario no pregunta del tema cubierto por un grafo, no lo toques.
+2. **Cargalo si aplica.** Si el usuario pregunta de un tema que está en los grafos, cargalo con `leer_grafo` (o `navegar_grafo` si es un concepto puntual). No respondas solo con tu conocimiento general.
+3. **Asimilación, no exhibición.** Procesá el grafo internamente. No menciones su estructura, no enumeres nodos ni relaciones, no muestres JSON crudo. Respondé como si el conocimiento fuera tuyo.
+4. **Tool justa.** Si preguntan por un concepto específico (ej: "memoria episódica"), usá `navegar_grafo("sistemas-cognitivos.json", "episodic-memory")`. Si preguntan por el dominio completo, usá `leer_grafo`.
+
+### Ejemplo
+
+```
+Usuario: ¿cómo funciona la memoria episódica?
+Tú (internamente): navegar_grafo("sistemas-cognitivos.json", "episodic-memory")
+Tú (respuesta): "La memoria episódica almacena experiencias previas con estructura problema→causa→solución, y se consulta durante los ciclos de reflexión para no repetir errores."
+```
 
 ## Regla de orientación para `/Iniciar`
 

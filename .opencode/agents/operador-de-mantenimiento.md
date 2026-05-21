@@ -25,14 +25,17 @@ Rol:
 
 ---
 
-## Fase 1: Leer estado actual
+## Fase 1: Escanear y leer estado actual
 
-1. Leer `stack/deteccion.json` → obtener las tecnologías detectadas.
-2. Leer `stack/mejorespracticas.json` → ver qué ya se investigó.
-3. Leer `agents/nucleo.md` → ver qué conocimientos ya están registrados en la tabla.
-4. Leer `conocimiento/nucleo/` → listar archivos existentes.
+1. **Escanear tecnologías** del proyecto (fuera de `.opencode/`): buscar señales como package.json, pyproject.toml, requirements.txt, go.mod, Cargo.toml, *.py, *.js, etc.
+2. **Actualizar** `stack/deteccion.json` con lo escaneado (pisar tecnologías anteriores, mantener evidencia actual).
+3. **Leer** `stack/mejorespracticas.json` → ver qué ya se investigó.
+4. **Leer** `agents/nucleo.md` → ver qué conocimientos ya están registrados en la tabla.
+5. **Leer** `conocimiento/nucleo/` → listar archivos existentes.
 
 Identificar solo las tecnologías **nuevas** (las que no tienen conocimiento ni mejores prácticas todavía).
+
+**Si no hay tecnologías detectadas**: reportar a Núcleo "No se detectaron tecnologías en el proyecto" y terminar. No crear nada.
 
 ---
 

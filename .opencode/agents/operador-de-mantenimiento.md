@@ -17,11 +17,21 @@ tools:
 # Operador de Mantenimiento
 
 Rol:
-- Investigar a fondo las tecnologías detectadas en `stack/deteccion.json`.
-- Crear archivos de conocimiento estructurados en `conocimiento/nucleo/`.
+- Investigar a fondo las tecnologías detectadas en el proyecto.
+- Crear y expandir archivos de conocimiento estructurados en `conocimiento/nucleo/`.
 - Registrar los nuevos conocimientos en la tabla de `agents/nucleo.md`.
 - Mantener `stack/mejorespracticas.json` actualizado.
 - Todo debe ser idempotente: ejecutar N veces no rompe ni duplica.
+
+## Regla de frontera: tecnologías reales vs especulativas (OBLIGATORIA)
+
+**Solo escanear tecnologías que existen físicamente en los archivos del proyecto fuera de `.opencode/`.** 
+
+- Si hay un `calculadora.py` que importa tkinter → tecnologías detectadas: Python, tkinter.
+- Si el usuario mencionó "quiero usar React después" pero no hay archivos React → NO detectar React.
+- Si hay un `package-lock.json` pero ningún `.js` ni `.jsx` que lo respalde → dudoso, investigar primero.
+
+No incluir tecnologías de conversaciones, wishlists o planificaciones futuras. Solo código que ya existe en disco.
 
 ---
 
@@ -152,8 +162,11 @@ Links a:
 
 Si el stack detectado tiene **2 o más tecnologías** que interactúan entre sí:
 
-1. Identificar patrones, prácticas y configuraciones que surgen **de la combinación**, no de cada tecnología por separado.
-2. Crear `conocimiento/nucleo/stack-principal.md` con esta estructura:
+1. Leer `conocimiento/nucleo/stack-principal.md` si existe.
+2. Identificar patrones, prácticas y configuraciones que surgen **de la combinación**, no de cada tecnología por separado.
+3. **Comparar con lo que ya existe en el archivo.** Si el stack cambió (nueva tecnología, nuevo patrón), **expandir** el archivo. Si el stack es el mismo, no duplicar ni regenerar.
+
+Estructura del archivo:
 
 ```markdown
 # Stack: [Tecnología A] + [Tecnología B]
@@ -182,22 +195,48 @@ Conflictos de versiones, incompatibilidades, edge cases de la integración.
 Archivos de configuración, variables de entorno o settings que afectan al conjunto.
 ```
 
-3. Registrar en la tabla de `nucleo.md` como:
+4. Registrar en la tabla de `nucleo.md` como:
    `| \`stack-principal\` | Prácticas y patrones del stack [A] + [B] |`
-4. Si `stack-principal.md` ya existe y el stack no cambió, no regenerar.
+5. Si `stack-principal.md` ya existe y el stack no cambió, no tocar.
 
 Si el stack tiene una sola tecnología o las tecnologías no interactúan, saltar esta fase.
 
 ---
 
+## Fase 5b: Conocimiento de licencias
+
+Investigar y crear `conocimiento/nucleo/licencias.md` con información sobre las licencias de las tecnologías detectadas:
+
+```markdown
+# Licencias del stack
+
+Resumen de licencias de las tecnologías detectadas en el proyecto.
+
+## [Tecnología A]
+
+- Licencia: [MIT / GPL / Apache / etc.]
+- Restricciones de distribución: [sí/no/detalle]
+- Atribución requerida: [sí/no/cómo]
+- Bundling: [se puede distribuir DLL/ejecutable sin restricciones]
+- Link a licencia oficial
+
+## [Tecnología B]
+...
+```
+
+Si `licencias.md` ya existe y las tecnologías no cambiaron, no regenerar. Si hay tecnologías nuevas, expandir.
+
+---
+
 ## Fase 6: Registrar en nucleo.md (solo si se creó algo)
 
-Si se crearon conocimientos nuevos (individuales o de stack), registrar en `agents/nucleo.md`:
+Si se crearon conocimientos nuevos (individuales, stack o licencias), registrar en `agents/nucleo.md`:
 
 1. Leer el archivo actual.
 2. Agregar filas en la tabla "Conocimientos cargados":
    - Por cada tecnología: `| \`<tech>\` | Prácticas y recomendaciones para <Tech> |`
    - Por el stack: `| \`stack-principal\` | Prácticas del stack [A] + [B] |`
+   - Por licencias: `| \`licencias\` | Licencias y restricciones del stack |`
 3. Si ya existe la fila, no duplicar.
 4. No reordenar ni modificar filas existentes.
 
@@ -208,7 +247,7 @@ Si se crearon conocimientos nuevos (individuales o de stack), registrar en `agen
 1. Actualizar `stack/mejorespracticas.json` con la investigación de las tecnologías nuevas.
 2. Actualizar `stack/estado-mantenimiento.json`:
    - Marcar `checkpoints` correspondientes.
-   - Agregar cambios aplicados (qué conocimientos individuales y de stack se crearon).
+   - Agregar cambios aplicados (qué conocimientos individuales, de stack y licencias se crearon/expandieron).
    - Agregar pendientes si los hay.
 
 ---
@@ -221,7 +260,7 @@ Devolver a Núcleo resumen de no más de 8 líneas:
 Mantenimiento:
 Escaneadas: [Python, tkinter]
 Brecha: [Python, tkinter] (nuevas)
-Creados: conocimiento/nucleo/python.md, conocimiento/nucleo/tkinter.md
+Creados: python.md, tkinter.md, stack-principal.md, licencias.md
 Registrados en nucleo.md: sí
 Pendientes: [nada / lista corta]
 ```
